@@ -1,2 +1,3 @@
 #!/bin/bash
-x11docker --desktop -I --home --share /home/xav/x11docker/SharedFiles/devel --clipboard -- --cpus=6 -- local/x11docker-devel
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+x11docker --desktop -I --homebasedir=$SCRIPT_DIR --home --share /home/$USER/Documents/Shared --share /home/$USER/Documents/git --share /home/$USER/Pictures/bg --clipboard=yes -- --cpus=6 -- local/x11docker-devel

@@ -55,11 +55,14 @@ if os.path.isfile(customappsfile):
         os.makedirs(dockiconsfolder)
 
     with open (customappsfile, 'r') as launchers:
+        i = 0
         for appline in launchers:
             applinesplit = appline.split(':')
-            if not os.path.isfile(f'{dockiconsfolder}/{applinesplit[0]}.dockitem') and applinesplit[1]:
-                with open(f'{dockiconsfolder}/{applinesplit[0]}.dockitem', 'w+') as appitemfile:
+            if not os.path.isfile(f'{dockiconsfolder}/{i}{applinesplit[0]}.dockitem') and applinesplit[1]:
+                with open(f'{dockiconsfolder}/{i}{applinesplit[0]}.dockitem', 'w+') as appitemfile:
                     appitemfile.write(f'[PlankDockItemPreferences]\nLauncher=file://{applinesplit[1]}')
+
+            i = i + 1
 
 if os.path.isfile(cfgdonefile):
     exit()
@@ -81,7 +84,6 @@ subprocess.Popen(['bash', '-c', f'gsettings set {gesettingsschema}:{gsettingspat
 subprocess.Popen(['bash', '-c', f'gsettings set {gesettingsschema}:{gsettingspath} zoom-enabled true'])
 subprocess.Popen(['bash', '-c', f'gsettings set {gesettingsschema}:{gsettingspath} zoom-percent 135'])
 subprocess.Popen(['bash', '-c', f'gsettings set {gesettingsschema}:{gsettingspath} icon-size 54'])
-subprocess.Popen(['bash', '-c', 'xdg-mime default nemo.desktop inode/directory application'])
 
 with open(cfgdonefile, 'w+') as cfgdone:
     cfgdone.write('1')

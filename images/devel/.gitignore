@@ -1,2 +1,4 @@
 *.tar.gz
 *.tar.xz
+*.md5
+*.deb
