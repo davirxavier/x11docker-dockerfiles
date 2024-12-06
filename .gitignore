@@ -1,1 +1,6 @@
 launchers/*/
+images/test/
+images/*/*.tar.gz
+images/*/*.tar.xz
+images/*/*.deb
+images/*/*.md5
