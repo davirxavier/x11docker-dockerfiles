@@ -1,11 +1,11 @@
 FROM local/x11docker-xfce-themed
 
 RUN apt-get -y update
-RUN apt-get -y install wget tar curl rename flatpak midori
+RUN apt-get -y install wget tar curl rename flatpak midori build-essential
 
 WORKDIR /usr/local
 
-COPY idea.tar.gz .
+RUN wget -O idea.tar.gz https://download.jetbrains.com/idea/ideaIU-2024.3.tar.gz
 RUN tar -xvzf idea.tar.gz
 RUN rm idea.tar.gz
 RUN chmod +x /usr/local/idea-IU-243.21565.193/bin/idea
@@ -20,7 +20,7 @@ Categories=Development
 EOL
 RUN ln -s /usr/local/idea-IU-243.21565.193/bin/idea /usr/local/bin/ideaui
 
-COPY rustrover.tar.gz .
+RUN wget -O rustrover.tar.gz https://download-cdn.jetbrains.com/rustrover/RustRover-2024.3.tar.gz
 RUN tar -xvzf rustrover.tar.gz
 RUN rm rustrover.tar.gz
 RUN chmod +x /usr/local/RustRover-2024.3/bin/rustrover
@@ -35,7 +35,7 @@ Categories=Development
 EOL
 RUN ln -s /usr/local/RustRover-2024.3/bin/rustrover /usr/local/bin/rustrover
 
-COPY pycharm.tar.gz .
+RUN wget -O pycharm.tar.gz https://download.jetbrains.com/python/pycharm-community-2024.3.tar.gz
 RUN tar -xvzf pycharm.tar.gz
 RUN rm pycharm.tar.gz
 RUN chmod +x /usr/local/pycharm-community-2024.3/bin/pycharm
