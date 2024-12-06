@@ -1,4 +1,4 @@
-FROM local/x11docker-xfce
+FROM local/x11docker-xfce-base
 
 RUN apt-get -y update && apt-get -y install git wget plank xz-utils sassc libglib2.0-dev libxml2-utils gnome-themes-extra gtk2-engines-murrine hicolor-icon-theme libgdk-pixbuf2.0-0 plank dconf-editor python3 && apt-get -y remove xfce4-panel
 
